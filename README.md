@@ -28,8 +28,8 @@
  * If both liked each other you can start chatting
 
  ### How to use:
- * rename 'vibing.env' file to '.env' => fill your info and API keys to that file
- * 'docker-compose up' on the terminal and you are ready to start!
+ * Rename 'vibing.env' file to '.env' => fill your info and API keys to that file
+ * Type'docker-compose up' on the terminal and you are ready to start!
  
  
 
