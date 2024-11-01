@@ -10,10 +10,7 @@ function useLogout(loggedIn, setLoggedIn) {
 
 	useEffect(() => {
 		axios.get('http://localhost:3001/logout')
-		// .then(() => {
-			setLoggedIn(false)
-		// })
-		// console.log('toka', loggedIn)
+		setLoggedIn(false)
 		setTimeout(() => {
 			window.location.replace('/');
 		}, 2000)

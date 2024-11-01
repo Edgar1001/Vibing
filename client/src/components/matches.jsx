@@ -10,7 +10,6 @@ function useMatches() {
   const [blocked, setBlocked] = useState([]);
   const [reported, setReported] = useState([]);
   const [myBlockStatus, setMyBlockStatus] = useState('')
-
 	const [images2, setImages2] = useState([]);
 
 
@@ -159,53 +158,3 @@ Matches.defaultProps = {
 
 export default Matches;
 
-
-	// const [matched, setMatched] = useState([]);
-	// const [userCoords, setUserCoords] = useState(null)
-  // const [blocked, setBlocked] = useState([]);
-  // const [reported, setReported] = useState([]);
-
-  // const [myBlockStatus, setMyBlockStatus] = useState('')
-
-  // axios.defaults.withCredentials = true;
-
-  // useEffect(() => {
-  //  axiosStuff
-  //  .getCookie().then((response) => {
-  //    if (response.loggedIn === false)
-  //      window.location.replace('/');
-  //  })
-  // }, [])
-
-	//  useEffect(() => {
-	// 	axiosStuff
-	// 	.getMatches().then((response) => {
-  //    if (response.rows)
-	// 		  setMatched(response.rows)
-	// 	})
-  //  axiosStuff
-  //  .getMatchBlock().then((response) => {
-  //    console.log('matchbloc', response.rows)
-  //    setBlocked(response.rows.map(blk => blk.block_id))
-  //    setReported(response.rows.map(rep => rep.report_id))
-  //  })
-	//  }, [])
-
-	//  useEffect(() => {
-	// 	axiosStuff
-	// 	.getUserCoords().then((response) => {
-	// 		setUserCoords(response.coordinates)
-	// 		})
-	//  	}, [])
-
-  //   useEffect(() => {
-  //    axiosStuff
-  //    .amiblocked().then((response) => {
-  //      setMyBlockStatus(response.rows.map((user) => user.user_id))
-  //    })
-  //   }, [])
-
-  // if (myBlockStatus)
-  // console.log('MITESMITES', myBlockStatus)
-	// console.log('matches',  matched.filter(user => blocked.includes(user.user_id)).length)
-  // console.log('BLOCKED', myBlockStatus)

@@ -12,7 +12,7 @@ function useBrowse() {
 	const [seeking, setSeeking] = useState('');
 	const [userCoords, setUserCoords] = useState(null)
 	const [myTags, setMyTags] = useState(null)
-  const [passed, setPassed] = useState([]);
+  	const [passed, setPassed] = useState([]);
 	const [matched, setMatched] = useState([]);
 	const [myFilter, setMyFilter] = useState(null);
 	const [tagsOn, setTagsOn] = useState(false);
