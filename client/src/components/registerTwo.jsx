@@ -121,52 +121,29 @@ function useRegisterTwo(itsMe) {
     })
   }, []);
 
+  // Step 1 - Image Selection (Upload Files)
+
+    function onImageChange(e) {
+      const newImages = [...images, ...e.target.files];
+      setImages(newImages);
+    }
+
+  // Step 3 - Create Image URLs (for Preview)
+
   useEffect(() => {
 		if (images.length < 1 || images.length > 5) return;
 		const newImageURLs = [];
+    // It iterates over the images array, creating an array of objects with id and url for each image.
 		images.forEach((image, i) => {
 			newImageURLs.push({ id: i, url: URL.createObjectURL(image) });
 		});
 		setImageURLs(newImageURLs);
 	}, [images]);
 
-   const userImages2 = images2.length ?
-    images2.filter(image => image.user_id === itsMe.id) :
-    [];
+ 
 
-  function onImageChange(e) {
-		const newImages = [...images, ...e.target.files];
-		setImages(newImages);
-	}
-
-   const handleFakeDelete = (imageId) => {
-    const del = {
-      delete1: imageId
-    }
-     axiosStuff.delFakeImg(del)
-    //  .then((response) => {
-      .then(() => {
-      setImages2(images2.filter(img => img.id !== imageId))
-      // console.log(response);
-     })
-	 }
-
-   const userIdReg = itsMe.id;
-
-   async function handleMain(imageId) {
-		try {
-			await axios.put(`http://localhost:3001/images/user/${userIdReg}/${imageId}`, {
-				avatar: false,
-				userIdReg
-			});
-			await axios.put(`http://localhost:3001/images/user/${userIdReg}/${imageId}`, {
-				avatar: true,
-				userIdReg
-			});
-		} catch (error) {
-			throw new Error(error)
-		}
-	}
+    
+ // Step 4 - Upload the Images (Send to Server) Its used fetch and formdata instead of axios.
 
   async function uploadImages(imageFiles) {
 		const formData = new FormData();
@@ -182,6 +159,8 @@ function useRegisterTwo(itsMe) {
 			});
       // console.log('resp', response)
 			if (!response.ok) throw new Error(response.statusText);
+
+      //  Fetching and setting uploaded images
       const newImages = await axiosStuff.getImages();
         setImages2(newImages.rows);
 			// console.log(await response.json());
@@ -190,8 +169,15 @@ function useRegisterTwo(itsMe) {
       throw new Error(error)
 		}
 	}
+  
+   // Step 5 - Main Image or Delete Action
 
-  const handleSubmit = (event) => {
+   const userImages2 = images2.length ?
+    images2.filter(image => image.user_id === itsMe.id) :
+    [];
+  
+  // Step 2 - Image Upload Validation (Handle Submit) - triggers pressing save button - 
+    const handleSubmit = (event) => {
 		event.preventDefault();
     if (images.length > 1) {
       setMessage('Only one file at the time.');
@@ -216,6 +202,37 @@ function useRegisterTwo(itsMe) {
     setImages([]);
   }
 
+  // Step 6 - Handle answer from Main Image or Delete button
+
+  const userIdReg = itsMe.id;
+
+  async function handleMain(imageId) {
+   try {
+    // server logic is used to make sure other mains set up are reseted.
+     await axios.put(`http://localhost:3001/images/user/${userIdReg}/${imageId}`, {
+       avatar: false,
+       userIdReg
+     });
+     await axios.put(`http://localhost:3001/images/user/${userIdReg}/${imageId}`, {
+       avatar: true,
+       userIdReg
+     });
+   } catch (error) {
+     throw new Error(error)
+   }
+ }
+
+  const handleFakeDelete = (imageId) => {
+    const del = {
+      delete1: imageId
+    }
+     axiosStuff.delFakeImg(del)
+    //  .then((response) => {
+      .then(() => {
+      setImages2(images2.filter(img => img.id !== imageId))
+      // console.log(response);
+     })
+	 }
 
 	return {
 		message, gpsStatus, lng, lat,	tagsReg, getLocation,
@@ -308,7 +325,7 @@ function RegisterTwo({ itsMe }) {
 								</div>
 							</div>
 						</div>
-        {/* images to upload */}
+        {/* images to upload -SECOND- */}
            <div className="py-6 border-b border-indigo-900">
 							<div className="w-full md:w-9/12">
 								<div className="flex flex-wrap -m-3">
@@ -338,16 +355,13 @@ function RegisterTwo({ itsMe }) {
 								</div>
 							</div>
 						</div>
-        {/* upload button */}
+        {/* upload button -FIRST- */}
             <div className="py-6 border-b border-indigo-900">
 							<div className="w-full md:w-9/12">
 								<div className="flex flex-wrap -m-3">
 									<div className="w-full p-3 md:w-1/3">
 										<p className="text-sm font-semibold text-coolGray-800">
 											Image Upload
-										</p>
-										<p className="text-xs font-medium text-coolGray-500">
-											Show Your Matcha
 										</p>
 									</div>
 

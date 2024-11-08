@@ -53,10 +53,10 @@ router.get('/login', (req, res) => {
 				console.log('req.user.session', err);
 			else {
 				res.send({ loggedIn: true, user: req.session.user, result });
-				// console.log('LOGINNNRESULT', result)
+
 			}
 		})
-		// console.log('session', req.session.user)
+		
 	}
 	else
 		res.send({ loggedIn: false });
