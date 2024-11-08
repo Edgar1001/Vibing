@@ -287,7 +287,7 @@ function RegisterTwo({ itsMe }) {
             </div>
           </div>
 	{/* PHOTO */}
-        {/* current photos */}
+        {/* current photos -THIRD- */}
         <form onSubmit={handleSubmit}>
         <div className="py-6 border-b border-indigo-900">
 							<div className="w-full md:w-9/12">
@@ -636,7 +636,7 @@ function RegisterTwo({ itsMe }) {
               <p>Save</p>
             </button>
           </div>
-        </form>
+        </form> 
         </div>
       </div>
 			{/* </form> */}
