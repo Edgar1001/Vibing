@@ -117,56 +117,7 @@ router.get('/login', (req, res) => {
 	})
  })
 
-/*router.post('/forgot', (req, res) => {
-	const email = req.body.fEmail;
-
-	pool.query(`SELECT * FROM users WHERE email = $1`,
-	[email],
-	(err, result) => {
-	 if (err)
-		 console.log('getting email err', err);
-	 else {
-		 if (result.rowCount === 1) {
-
-			const sendVerif = () => {
-				const verif = result.rows[0].verifycode
-				const mail = {
-					from: config.EMAIL,
-					to: email,
-					subject: `Link for changing password.`,
-					html: `
-						<h1>Click me!</h1> <br />
-						<a href='http://localhost:3000/get/${verif}'>ME</a>
-					`
-				}
-
-				var transporter = nodemailer.createTransport({
-					service: 'outlook',
-					auth: {
-						user: config.EMAIL,
-						pass: config.EMAIL_PASSWORD
-					}
-				})
-
-				transporter.sendMail(mail, (err) => {
-					if (err)
-						console.log('forgot err', err)
-					// else {
-					//	console.log('forget sent: ', info)
-					// }
-				})
-			}
-
-			 sendVerif();
-			 res.send({ result, message: `Link sended to '${email}'.`})
-		 }
-		 else {
-			 res.send({ result, message: `no such email.`})
-		 }
-	 }
-	})
-})*/
-
+ 
 router.post('/forgot', (req, res) => {
     const email = req.body.fEmail;
 
@@ -186,56 +137,6 @@ router.post('/forgot', (req, res) => {
         });
 });
 
-
-/*router.post('/login', (req, res) => {
-	const username = req.body.username;
-	const password = req.body.password;
-
-	if (username.length < 4 || username.length > 20)
-		return res.send({ message: `Username must be between 4 - 20 characters.`})
-	if (!username.match(/^[a-zA-Z0-9_.!@-]+$/))
-		return res.send({ message: 'Username can only have letters (a-z or A-Z), numbers (0-9) and some special characters (_.!#@-)'})
-	//password checks
-	if (password.length < 8 || password.length > 20)
-		return res.send({ message: `Password must be between 8 - 20 characters.`})
-	if (!password.match(/^[a-zA-Z0-9_.!@-]+$/))
-		return res.send({ message: 'Password can only have letters (a-z or A-Z), numbers (0-9) and some special characters (_.!#@-)'})
-
-	pool.query('SELECT * FROM users WHERE username = $1',
-	[username],
-	(err, result) => {
-		if (err)
-			console.log('Login', err);
-		if (result.rowCount == 1) {
-			bcrypt.compare(password, result.rows[0].password, (error, response) => {
-				if (response) {
-					//if (result.rows[0].status === 0) {
-					//	return res.send({ message: 'Verify your email thanks.'});
-					//}
-					req.session.user = result.rows[0];
-					pool.query(`UPDATE profile SET isonline = $1 WHERE username = $2`,
-					[1, username],
-					(err1, result1) => {
-						if (err)
-							console.log('isOnline ERRR', err1);
-						else {
-							// console.log('ISONLINEEE', result1)
-						}
-					})
-					res.send({ result, message: `Logged in as '${username}' `});
-				}
-				else
-					return res.send({ message: `Wrong username / password combo.` });
-			})
-		}
-		else {
-			return res.send({ message: 'User doesn\'t exist.'});
-		}
-	})
- })
-// UPDATE users SET online=CURRENT_TIMESTAMP WHERE username='repe'
-
-module.exports = router;*/
 
 router.post('/login', (req, res) => {
     const username = req.body.username;

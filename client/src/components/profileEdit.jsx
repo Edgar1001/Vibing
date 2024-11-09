@@ -309,8 +309,8 @@ function ProfileEdit() {
         }, 2000)
       }
       else
-        setMessage(`Fill the fields. And also check
-        that your bio length is 1-100 characters and only contains characters a-z and A-Z
+        setMessage(`Fill all the fields. Please check also
+        that your bio length is between 1-100 characters and contains only characters a-z and A-Z
         and " _.!@-"`)
 	}
 
@@ -759,7 +759,7 @@ function ProfileEdit() {
                       Bio
                     </p>
                     <p className="text-xs font-medium text-coolGray-500">
-                      Lorem ipsum dolor sit amet
+                      Please write a short description about yourself.
                     </p>
                   </div>
                   <div className="w-full p-3 md:flex-1">
