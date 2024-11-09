@@ -170,13 +170,13 @@ function useRegisterTwo(itsMe) {
 		}
 	}
   
-   // Step 5 - Main Image or Delete Action
+   // Step 5 - User pics. Main Image or Delete Action
 
    const userImages2 = images2.length ?
     images2.filter(image => image.user_id === itsMe.id) :
     [];
   
-  // Step 2 - Image Upload Validation (Handle Submit) - triggers pressing save button - 
+  // Step 3 - Image Upload Validation (Handle Submit) - triggers pressing save button - 
     const handleSubmit = (event) => {
 		event.preventDefault();
     if (images.length > 1) {
@@ -202,7 +202,7 @@ function useRegisterTwo(itsMe) {
     setImages([]);
   }
 
-  // Step 6 - Handle answer from Main Image or Delete button
+  // Step 6 - Handle answer from Main Image or Delete button. Directly to server with axios.
 
   const userIdReg = itsMe.id;
 

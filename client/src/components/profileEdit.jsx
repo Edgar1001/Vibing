@@ -100,6 +100,7 @@ function useProfileEdit() {
       })
     }
 	}, [gettingStatus])
+
 // Imagestuff
   useEffect(() => {
     axiosStuff.getImages().then((response) => {
@@ -107,6 +108,12 @@ function useProfileEdit() {
     })
   }, []);
 
+  // Step 1 - Image Selection (Upload Files)
+    function onImageChange(e) {
+		const newImages = [...images, ...e.target.files];
+		setImages(newImages);
+	}
+  // Step 2 - Create Image URLs (for Preview)
   useEffect(() => {
 		if (images.length < 1 || images.length > 5) return;
 		const newImageURLs = [];
@@ -116,42 +123,7 @@ function useProfileEdit() {
 		setImageURLs(newImageURLs);
 	}, [images]);
 
-   const userImages2 = images2.length ?
-    images2.filter(image => image.user_id === userIdReg) :
-    [];
-
-  function onImageChange(e) {
-		const newImages = [...images, ...e.target.files];
-		setImages(newImages);
-	}
-
-  const handleFakeDelete = (imageId) => {
-   const del = {
-     delete1: imageId
-   }
-    axiosStuff.delFakeImg(del)
-   //  .then((response) => {
-     .then(() => {
-     setImages2(images2.filter(img => img.id !== imageId))
-     // console.log(response);
-    })
-	}
-
-   async function handleMain(imageId) {
-		try {
-			await axios.put(`http://localhost:3001/images/user/${userIdReg}/${imageId}`, {
-				avatar: false,
-				userIdReg
-			});
-			await axios.put(`http://localhost:3001/images/user/${userIdReg}/${imageId}`, {
-				avatar: true,
-				userIdReg
-			});
-		} catch (error) {
-			throw new Error(error)
-		}
-	}
-
+  // Step 4 - Upload the Images (Send to Server) Its used fetch and formdata instead of axios.
   async function uploadImages(imageFiles) {
 		const formData = new FormData();
 		imageFiles.forEach((image) => {
@@ -174,6 +146,39 @@ function useProfileEdit() {
 		}
 	}
 
+  // Step 5 - Users pics. Main Image or Delete Action  
+  const userImages2 = images2.length ?
+  images2.filter(image => image.user_id === userIdReg) :
+    [];
+
+  // Step 6 - Handle answer from Main Image or Delete button. Directly to server with axios.
+  async function handleMain(imageId) {
+		try {
+			await axios.put(`http://localhost:3001/images/user/${userIdReg}/${imageId}`, {
+				avatar: false,
+				userIdReg
+			});
+			await axios.put(`http://localhost:3001/images/user/${userIdReg}/${imageId}`, {
+				avatar: true,
+				userIdReg
+			});
+		} catch (error) {
+			throw new Error(error)
+		}
+	}
+  const handleFakeDelete = (imageId) => {
+    const del = {
+      delete1: imageId
+    }
+     axiosStuff.delFakeImg(del)
+    //  .then((response) => {
+      .then(() => {
+      setImages2(images2.filter(img => img.id !== imageId))
+      // console.log(response);
+     })
+   }  
+  
+  // Step 3 - Image Upload Validation (Handle Submit) - triggers pressing save button - 
   const handleSubmit = (event) => {
 		event.preventDefault();
     if (images.length > 1) {
@@ -512,9 +517,6 @@ function ProfileEdit() {
 									<div className="w-full p-3 md:w-1/3">
 										<p className="text-sm font-semibold text-coolGray-800">
 											Image Upload
-										</p>
-										<p className="text-xs font-medium text-coolGray-500">
-											Show Your Matcha
 										</p>
 									</div>
 

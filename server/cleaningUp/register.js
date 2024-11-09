@@ -312,22 +312,4 @@ router.get('/registerTwo', (req, res) => {
 		res.redirect('/');
 })
 
-// router.get('/bigdata', (req, res) => {
-//   const query = req.query.query;
-//   const api_key = '9417497716084e0dbb126edbc6037872';
-//   const url = `https://api.opencagedata.com/geocode/v1/json?q=${query}&key=${api_key}`;
-
-//   fetch(url).then(data => {
-// 		data.json().then((parsed) => {
-//       res.send({ parsed });
-// 			console.log(parsed)
-// 		})
-//     })
-//     .catch(error => {
-//       console.error('OPENCAGE', error);
-//       res.status(500).send({ error });
-//     });
-// });
-
-
 module.exports = router;
