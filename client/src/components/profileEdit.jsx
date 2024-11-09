@@ -301,12 +301,13 @@ function ProfileEdit() {
          .then((response) => {
           if (response.message)
             setMessage(response.message);
-          axiosStuff
-          .logoutTime(logoutuser)
+          // axiosStuff
+          // .logoutTime(logoutuser)
          })
+        // Redirect to /browse after the profile is updated
         setTimeout(() => {
-          window.location.replace('/logout');
-        }, 2000)
+          window.location.replace('/browse'); 
+        }, 2000) 
       }
       else
         setMessage(`Fill all the fields. Please check also
