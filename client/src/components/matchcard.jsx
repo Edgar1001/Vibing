@@ -464,49 +464,63 @@ function MatchCard({ itsMe, socket }) {
 		{/* <div className="w-full px-4 mb-16 lg:mb-0 lg:w-1/2" /> */}
 		<div className="w-full px-4 lg:w-1/2">
 			<div className="mb-6 rounded-2xl border-[3px] border-indigo-900 bg-white px-6 py-12 text-center shadow-md md:px-12">
-{/* MY OWN SHITTY HTML */}
+{/* MY OWN HTML */}
 				{/* <form className="text-left" action=""> */}
-					<div className="w-full h-64 p-4 mb-8 overflow-y-scroll text-lg font-extrabold placeholder-indigo-900 border-2 border-indigo-900 rounded shadow resize-none chatContainer h-50">
-			{/* MESSAGES FROM DATABASE  */}
-					<div className="messages">
-							{allDataFromMessages.filter(huhu => (huhu.sender_id === itsMe.id || huhu.to_id === itsMe.id) &&
-								(huhu.sender_id === getId || huhu.to_id === getId))
-								.map((dbvalue) =>
-											<div className="messageContainer"
-												id={dbvalue.sender_id === itsMe.id ? 'You' : 'Other'}
-												key={shortid.generate()}
-											>
-											<div className="messageIndividual"
-												key={dbvalue.id}
-											>
-												{dbvalue.sender_id === itsMe.id ? itsMe.username : username}: <div className="messageText">{dbvalue.message}</div>
-											</div>
-										</div>
-								// )
-							)}
-						</div>
-				{/* MESSAGES FROM CHAT  */}
-						<div className="messages">
-							{messageList.map((value) => (
+<div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gradient-to-b from-indigo-50 to-purple-50 rounded-lg shadow-inner max-h-[500px]">
+  {/* Messages from Database */}
+  <div className="messages space-y-3">
+    {allDataFromMessages.filter(huhu => (huhu.sender_id === itsMe.id || huhu.to_id === itsMe.id) &&
+      (huhu.sender_id === getId || huhu.to_id === getId))
+      .map((dbvalue) => (
+        <div 
+          className={`flex ${dbvalue.sender_id === itsMe.id ? 'justify-end' : 'justify-start'}`}
+          key={shortid.generate()}
+        >
+          <div className={`relative max-w-xs p-4 rounded-2xl shadow-md text-sm ${
+            dbvalue.sender_id === itsMe.id ? 'bg-green-500 text-white' : 'bg-purple-500 text-white'
+          }`}>
+            {/* Username aligned to the left with a colon before the message */}
+            <span className="block font-semibold" style={{ color: "yellow" }}>
+              {dbvalue.sender_id === itsMe.id ? itsMe.username : username}: 
+            </span>
+            {/* Message content */}
+            <p className="mt-1 messageText">{dbvalue.message}</p>
+            
+            <span className="text-xs text-gray-300 absolute bottom-1 right-2">
+              {moment(dbvalue.timestamp).format('HH:mm')}
+            </span>
+          </div>
+        </div>
+      ))
+    }
+  </div>
 
-								<div className="messageContainer"
-									id={value.author === itsMe.username ? 'You' : 'Other'}
-									key={shortid.generate()}
-								>
-									<div className="messageIndividual"
-									>
-										{value.author}: <div className="messageText">{value.message}</div>
-									</div>
 
-								</div>
-							)
-							)}
+
+				{/* Live Chat Messages */}
+				<div className="messages space-y-3">
+					{messageList.map((value) => (
+					<div 
+						className={`flex ${value.author === itsMe.username ? 'justify-end' : 'justify-start'}`}
+						key={shortid.generate()}
+					>
+						<div className={`relative max-w-xs p-4 rounded-2xl shadow-md text-sm ${
+						value.author === itsMe.username ? 'bg-green-500 text-white' : 'bg-purple-500 text-white'
+						}`}>
+						<span className="block text-left font-semibold">
+							{value.author}
+						</span>
+						<p className="mt-1 messageText">{value.message}</p>
 						</div>
 					</div>
+					))}
+				</div>
+				</div>
+
 
 					<InfoText message={message} />
 
-					<div className="mb-8 text-left messageInputs">
+					<div className="mb-8 mt-12 text-left messageInputs">
 						<textarea
 							className="w-full p-4 text-lg font-extrabold placeholder-indigo-900 border-2 border-indigo-900 rounded shadow resize-none"
 							name=""
