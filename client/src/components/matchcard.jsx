@@ -463,7 +463,7 @@ function MatchCard({ itsMe, socket }) {
 	<div className="flex flex-wrap justify-center">
 		{/* <div className="w-full px-4 mb-16 lg:mb-0 lg:w-1/2" /> */}
 		<div className="w-full px-4 lg:w-1/2">
-			<div className="mb-6 rounded-2xl border-[3px] border-indigo-900 bg-white px-6 py-12 text-center shadow-md md:px-12">
+			<div className="mb-6 rounded-2xl border-[3px] border-indigo-900 bg-green-100 px-6 py-12 text-center shadow-md md:px-12">
 {/* MY OWN HTML */}
 				{/* <form className="text-left" action=""> */}
 <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gradient-to-b from-indigo-50 to-purple-50 rounded-lg shadow-inner max-h-[500px]">
