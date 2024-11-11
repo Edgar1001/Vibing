@@ -496,24 +496,32 @@ function MatchCard({ itsMe, socket }) {
   </div>
 
 
-
+				
 				{/* Live Chat Messages */}
 				<div className="messages space-y-3">
-					{messageList.map((value) => (
+				{messageList.map((value) => (
 					<div 
-						className={`flex ${value.author === itsMe.username ? 'justify-end' : 'justify-start'}`}
-						key={shortid.generate()}
+					className={`flex ${value.author === itsMe.username ? 'justify-end' : 'justify-start'}`}
+					key={shortid.generate()}
 					>
-						<div className={`relative max-w-xs p-4 rounded-2xl shadow-md text-sm ${
+					<div className={`relative max-w-xs p-4 rounded-2xl shadow-md text-sm ${
 						value.author === itsMe.username ? 'bg-green-500 text-white' : 'bg-purple-500 text-white'
-						}`}>
-						<span className="block text-left font-semibold">
-							{value.author}
+					}`}>
+						{/* Username aligned to the left with a colon */}
+						<span className="block text-left font-semibold"style={{ color: "yellow" }}>
+						{value.author}<span className="inline">:</span>
 						</span>
+						
+						{/* Message content */}
 						<p className="mt-1 messageText">{value.message}</p>
-						</div>
+
+						{/* Timestamp in the bottom right */}
+						<span className="text-xs text-gray-300 absolute bottom-1 right-2">
+						{moment(value.timestamp).format('HH:mm')}
+						</span>
 					</div>
-					))}
+					</div>
+				))}
 				</div>
 				</div>
 
