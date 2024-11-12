@@ -129,31 +129,32 @@ function BrowseCard(props) {
 	const userImages2 = images2.length ? images2.filter(image =>
 		image.user_id === userId) : []
 
-	return (
-		<div className="container px-4 py-10 mx-auto">
-		<div className="flex flex-wrap justify-center -mx-4" id='card'>
-			<div className="w-full px-4 lg:w-1/2" >
-				<div className="flex h-full flex-col rounded-2xl border-[3px] border-indigo-900 bg-blue-100 shadow-md">
-					<div className="flex flex-wrap items-center justify-between px-4 py-6 border-indigo-900 lg:px-12">
-						<div className="w-full pl-2 mb-2 sm:mb-0 ">
-							<h2 className="pb-3 text-2xl font-semibold text-indigo-800 hover:text-green-500">
-								{/* Username: */} {username}
-							</h2>
-							<p className="text-lg font-semibold leading-7 text-green-500 hover:text-indigo-800">
-								Age:{age}
-							</p>
-						</div>
-					</div>
-	{/* IMAGEES */}
-	<div className="items-center justify-center w-full px-8 pb-8">
-  <div className="max-w-lg h-128 sm:h-64 xl:h-80 2xl:h-96 rounded-2xl overflow-hidden border-[3px] border-indigo-900">
-    <Carousel slide={false}>
-      {userImages2.map((image) => (
-        <img
-          className="w-full h-full object-cover rounded-2xl"
-          src={image.path}
-          alt={image.name}
-          key={image.id}
+		return (
+			<div className="container px-4 py-10 mx-auto">
+  <div className="flex flex-wrap justify-center -mx-4" id="card">
+    <div className="w-full px-4 lg:w-1/2">
+      <div className="flex h-full flex-col rounded-2xl border-[3px] border-indigo-900 bg-blue-100 shadow-md">
+        <div className="flex flex-wrap items-center justify-between px-4 py-6 border-indigo-900 lg:px-12">
+          <div className="w-full pl-2 mb-2 sm:mb-0 ">
+            <h2 className="pb-3 text-2xl font-semibold text-indigo-800 hover:text-green-500">
+              {username}
+            </h2>
+            <p className="text-lg font-semibold leading-7 text-green-500 hover:text-indigo-800">
+              Age: {age}
+            </p>
+          </div>
+        </div>
+        
+        {/* IMAGE SECTION */}
+        <div className="flex justify-center items-center w-full px-8 pb-8">
+          <div className="w-full max-w-lg h-64 sm:h-64 xl:h-80 2xl:h-96 rounded-2xl overflow-hidden border-[3px] border-indigo-900">
+            <Carousel slide={false}>
+              {userImages2.map((image) => (
+                <img
+                  className="w-full h-full object-cover rounded-2xl"
+                  src={image.path}     // Make sure this path is correct
+                  alt={image.name}
+                  key={image.id}
         />
       ))}
     </Carousel>

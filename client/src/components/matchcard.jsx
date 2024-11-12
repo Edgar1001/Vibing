@@ -454,7 +454,9 @@ function MatchCard({ itsMe, socket }) {
 					Start your conversation!
 				</p>
 				<a href="/browse">
-					<button	type="button">Exit chat</button>
+				<button type="button" className="px-6 py-3 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75 transition duration-200">
+					Exit chat
+				</button>
 				</a>
 			</div>
 		</div>
@@ -462,7 +464,7 @@ function MatchCard({ itsMe, socket }) {
 	</div>
 	<div className="flex flex-wrap justify-center">
 		{/* <div className="w-full px-4 mb-16 lg:mb-0 lg:w-1/2" /> */}
-		<div className="w-full px-4 lg:w-1/2">
+		<div className="w-full px-4 lg:w-3/3 max-w-4x4">
 			<div className="mb-6 rounded-2xl border-[3px] border-indigo-900 bg-green-100 px-6 py-12 text-center shadow-md md:px-12">
 {/* MY OWN HTML */}
 				{/* <form className="text-left" action=""> */}
