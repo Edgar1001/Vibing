@@ -454,7 +454,7 @@ function MatchCard({ itsMe, socket }) {
 					Start your conversation!
 				</p>
 				<a href="/browse">
-				<button type="button" className="px-6 py-3 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75 transition duration-200">
+				<button type="button" className="mt-3 px-6 py-3 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75 transition duration-200">
 					Exit chat
 				</button>
 				</a>
