@@ -48,7 +48,7 @@ function MatchPreview({ images2, itsMe, userId, username, firstname, lastname, l
 		image.user_id === userId) : []
 
 	return (
-	<div className="w-full px-4 mb-8 md:w-1/2 lg:w-1/4">
+	<div className="w-full px-4 mb-8 md:w-3/3 lg:w-4/4">
 		<div className="mx-auto flex h-full max-w-md flex-col rounded-2xl border-[3px] border-indigo-900 bg-blue-100 px-6 py-12 shadow md:p-12">
 			<h2 className="mb-2 text-xl font-extrabold">
 				{`${username}, ${age}`}
@@ -65,13 +65,19 @@ function MatchPreview({ images2, itsMe, userId, username, firstname, lastname, l
           ))}
         </Carousel>
       </div>
-			<button type='button' onClick={toMatchProfile}>
-				to profile
-			</button>
-			<h2 className="mb-2 text-xl font-extrabold">
-				{firstname}
-				<span className="block">{lastname}</span>
+		<button 
+		type="button" 
+		onClick={toMatchProfile} 
+		className="mt-6 px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-full shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-75 text-sm"
+		>
+		See profile
+		</button>
+
+
+			<h2 className="mt-5 mb-2 text-xl font-extrabold">
+			{firstname} <span className="text-lg">{lastname}</span>
 			</h2>
+
 			<span className="block mb-8 font-bold leading-6 text-indigo-300">
 				{`${location} ${calculateDistance()}`}
 			</span>
