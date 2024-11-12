@@ -26,7 +26,9 @@
 
  ### It's a match!
  * If both liked each other you can start chatting
-![Description of the GIF](client\src\images\Animation3.gif)
+
+![App Demo](client/src/images/Animation3.gif)
+
 
  ### How to use:
  * Rename 'vibing.env' file to '.env' => fill your info and API keys to that file
