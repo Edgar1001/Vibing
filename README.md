@@ -27,6 +27,9 @@
  ### It's a match!
  * If both liked each other you can start chatting
 
+![App Demo](client/src/images/Animation5.gif)
+
+
  ### How to use:
  * Rename 'vibing.env' file to '.env' => fill your info and API keys to that file
  * Type'docker-compose up' on the terminal and you are ready to start!
