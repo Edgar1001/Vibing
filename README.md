@@ -17,7 +17,8 @@
 * Possibility to change username, firstname, lastname, email, location, etc.
 * Upload pictures
 * On your profile page, you can see the profiles you visited and the users who visited your profile
-
+  
+![App Demo](client/src/images/Animation10.gif)
 
 ### Finding your possible lovers
 * Match / Pass 
@@ -27,7 +28,7 @@
  ### It's a match!
  * If both liked each other you can start chatting
 
-![App Demo](client/src/images/Animation5.gif)
+![App Demo](client/src/images/Animation4.gif)
 
 
  ### How to use:
