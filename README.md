@@ -12,12 +12,6 @@
 ## Features:
 
 ### Registration/Login
-
-* User profile page
-* Possibility to change username, firstname, lastname, email, location, etc.
-* Upload pictures
-* On your profile page, you can see the profiles you visited and the users who visited your profile
-  
 * Secure Authentication System: The website uses cookies to manage a secure login and authentication system.
 * Two-Step Registration with Email Verification: New users register with a two-step process that includes email
   verification to confirm their identity.
@@ -25,7 +19,6 @@
 ![App Demo](client/src/images/Animation10.gif)
 
 ### Profile
-
 * User Profile Page: Each user has a dedicated profile page displaying personal information.
 * Editable Profile Information: Users can update their profile details.
 * Profile Picture Upload: Users have the ability to upload pictures to personalize their profiles.
