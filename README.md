@@ -27,7 +27,7 @@
  ### It's a match!
  * If both liked each other you can start chatting
 
-![App Demo](client/src/images/Animation5.gif)
+![App Demo](client/src/images/Animation4.gif)
 
 
  ### How to use:
